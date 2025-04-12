@@ -25,7 +25,7 @@ function App() {
 	return !loading ? (
 		<div className="min-h-screen flex flex-col bg-gray-400 w-full">
 			<Header />
-			<main className="flex-1">
+			<main className="flex-1 h-full relative">
 				<Outlet />
 			</main>
 			<div className="text-center py-4">Made by vansh4117v</div>

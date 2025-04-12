@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import appwriteService from "../appwrite/config";
 import { Container, PostCard } from "../components";
+import { useSelector } from "react-redux";
 
 const Home = () => {
 	const [posts, setPosts] = useState([]);
+	const userStatus  = useSelector((state) => state.auth.status)
 	useEffect(() => {
 		appwriteService.getPosts().then((posts) => {
 			if (posts) {
@@ -13,16 +15,8 @@ const Home = () => {
 	}, []);
 	if (posts.length === 0) {
 		return (
-			<div className="w-full py-8 mt-4 text-center">
-				<Container>
-					<div className="flex flex-wrap">
-						<div className="p-2 w-full">
-							<h1 className="text-2xl font-bold hover:text-gray-500">
-								No Posts
-							</h1>
-						</div>
-					</div>
-				</Container>
+			<div className="h-full absolute inset-0 flex justify-center items-center text-2xl font-bold ">
+				{userStatus?"No Posts Yet!": "Please Login to see posts!"}
 			</div>
 		);
 	} else {

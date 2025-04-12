@@ -18,7 +18,7 @@ function Signup() {
 			const userData = await authService.createAccount(data);
 			if (userData) {
 				const userData = await authService.getCurrentUser();
-				if (userData) dispatch(login(userData));
+				if (userData) dispatch(login({userData}));
 				navigate("/");
 			}
 		} catch (error) {
@@ -33,7 +33,7 @@ function Signup() {
 			>
 				<div className="mb-2 flex justify-center">
 					<span className="inline-block w-full max-w-[100px]">
-						<Logo width="100%" />
+						<Logo />
 					</span>
 				</div>
 				<h2 className="text-center text-2xl font-bold leading-tight">
